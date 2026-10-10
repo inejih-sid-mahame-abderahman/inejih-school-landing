@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مدرسة انجيه — تعلّم بناء مواقعك ومشاريعك الرقمية بالذكاء الاصطناعي</title>
+<meta name="description" content="دورة عملية للمبتدئين في موريتانيا: تعلّم استخدام الذكاء الاصطناعي لبناء مواقعك وصفحاتك التسويقية ومشاريعك الرقمية من الصفر، دون خبرة برمجية وبأدوات مجانية قدر الإمكان.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#081226;
+  --navy-2:#0B1E3D;
+  --navy-3:#102a52;
+  --blue:#3B82F6;
+  --blue-light:#60A5FA;
+  --blue-neon:#4A9EFF;
+  --white:#F4F7FE;
+  --muted:#A9BAD6;
+  --card:rgba(16,42,82,.55);
+  --border:rgba(96,165,250,.18);
+  --radius:18px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Cairo',system-ui,sans-serif;
+  background:var(--navy);
+  color:var(--white);
+  line-height:1.8;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.container{width:min(1120px,92%);margin-inline:auto}
+section{padding:88px 0}
+.section-tag{
+  display:inline-block;background:rgba(59,130,246,.12);color:var(--blue-light);
+  border:1px solid var(--border);padding:6px 18px;border-radius:999px;
+  font-weight:700;font-size:.85rem;margin-bottom:18px;
+}
+h1,h2,h3{line-height:1.5;font-weight:800}
+h2{font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:14px}
+.lead{color:var(--muted);font-size:1.1rem;max-width:680px}
+
+/* ===== Header ===== */
+header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(8,18,38,.85);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+.logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:1.25rem}
+.logo span{color:var(--blue-light)}
+.nav-links{display:flex;gap:26px;font-weight:600;font-size:.95rem}
+.nav-links a{color:var(--muted);transition:.2s}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{background:var(--blue);padding:10px 22px;border-radius:12px;font-weight:700;transition:.2s}
+.nav-cta:hover{background:var(--blue-light)}
+@media(max-width:820px){.nav-links{display:none}}
+
+/* ===== Hero ===== */
+.hero{padding:70px 0 90px;position:relative;
+  background:radial-gradient(900px 480px at 85% -10%,rgba(59,130,246,.22),transparent 65%),
+             radial-gradient(700px 400px at 5% 110%,rgba(74,158,255,.12),transparent 60%);
+}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;background:rgba(52,211,153,.12);
+  color:#6EE7B7;border:1px solid rgba(110,231,183,.3);
+  padding:8px 18px;border-radius:999px;font-weight:700;font-size:.9rem;margin-bottom:22px;
+}
+.hero h1{font-size:clamp(1.9rem,5vw,3.1rem);font-weight:900;margin-bottom:18px}
+.hero h1 .hl{color:var(--blue-neon)}
+.hero p{color:var(--muted);font-size:1.12rem;max-width:560px;margin-bottom:30px}
+.hero-points{list-style:none;margin-bottom:34px;display:grid;gap:10px}
+.hero-points li{display:flex;align-items:flex-start;gap:10px;color:var(--white);font-weight:600}
+.hero-points svg{flex:none;margin-top:6px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:15px 32px;border-radius:14px;font-weight:800;font-size:1.05rem;
+  transition:.2s;border:none;cursor:pointer;font-family:inherit;
+}
+.btn-primary{background:linear-gradient(135deg,var(--blue),#2563EB);color:#fff;box-shadow:0 8px 24px rgba(59,130,246,.35)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(59,130,246,.5)}
+.btn-ghost{background:transparent;color:var(--white);border:1.5px solid var(--border)}
+.btn-ghost:hover{border-color:var(--blue-light);background:rgba(59,130,246,.08)}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.hero-img-wrap{position:relative}
+.hero-img{
+  border-radius:24px;border:1px solid var(--border);
+  box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 0 6px rgba(59,130,246,.06);
+  object-fit:cover;width:100%;aspect-ratio:1/1;
+}
+.price-chip{
+  position:absolute;bottom:-18px;inset-inline-start:-14px;
+  background:var(--navy-2);border:1px solid var(--border);border-radius:16px;
+  padding:12px 22px;box-shadow:0 16px 40px rgba(0,0,0,.45);
+}
+.price-chip .old{text-decoration:line-through;color:var(--muted);font-size:.9rem}
+.price-chip .new{color:var(--blue-neon);font-weight:900;font-size:1.4rem}
+@media(max-width:900px){.price-chip{inset-inline-start:8px}}
+
+/* ===== Problem ===== */
+.problem{background:var(--navy-2)}
+.problem-list{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:38px}
+@media(max-width:720px){.problem-list{grid-template-columns:1fr}}
+.prob-card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:26px;display:flex;gap:16px;align-items:flex-start;
+}
+.prob-icon{
+  flex:none;width:46px;height:46px;border-radius:12px;
+  background:rgba(59,130,246,.14);display:grid;place-items:center;color:var(--blue-light);
+}
+.prob-card p{color:var(--muted);font-size:.98rem}
+
+/* ===== Solution ===== */
+.sol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}
+@media(max-width:900px){.sol-grid{grid-template-columns:1fr}}
+.sol-card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:30px 24px;transition:.25s;
+}
+.sol-card:hover{transform:translateY(-4px);border-color:rgba(96,165,250,.4)}
+.sol-card h3{font-size:1.1rem;margin:16px 0 8px;color:var(--white)}
+.sol-card p{color:var(--muted);font-size:.96rem}
+.sol-num{
+  width:44px;height:44px;border-radius:50%;
+  background:linear-gradient(135deg,var(--blue),#2563EB);
+  display:grid;place-items:center;font-weight:900;font-size:1.1rem;
+}
+.honest-note{
+  margin-top:30px;background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.25);
+  border-radius:var(--radius);padding:20px 26px;color:#FDE68A;font-size:.97rem;
+}
+
+/* ===== Project types ===== */
+.types{background:var(--navy-2)}
+.types-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:38px}
+@media(max-width:760px){.types-grid{grid-template-columns:1fr}}
+.type-card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:28px;position:relative;overflow:hidden;
+}
+.type-card::before{
+  content:"";position:absolute;inset-inline-start:0;top:0;bottom:0;width:4px;
+  background:linear-gradient(180deg,var(--blue),transparent);
+}
+.type-card h3{font-size:1.15rem;margin-bottom:8px}
+.type-card p{color:var(--muted);font-size:.97rem}
+
+/* ===== Real projects ===== */
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:38px}
+@media(max-width:760px){.projects-grid{grid-template-columns:1fr}}
+.proj-card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:30px;display:flex;flex-direction:column;gap:10px;transition:.25s;
+}
+.proj-card:hover{border-color:rgba(96,165,250,.45);transform:translateY(-4px)}
+.proj-card .tag{font-size:.78rem;color:var(--blue-light);font-weight:700}
+.proj-card p{color:var(--muted);font-size:.97rem;flex:1}
+.proj-link{
+  color:var(--blue-neon);font-weight:700;display:inline-flex;align-items:center;gap:6px;
+}
+.proj-link:hover{text-decoration:underline}
+
+/* ===== Audience ===== */
+.audience{background:var(--navy-2)}
+.aud-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;margin-top:38px}
+@media(max-width:860px){.aud-grid{grid-template-columns:1fr}}
+.check-list{list-style:none;display:grid;gap:14px}
+.check-list li{display:flex;gap:12px;align-items:flex-start}
+.check-list p{color:var(--muted);font-size:.98rem}
+.needs{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:30px;
+}
+.needs h3{margin-bottom:16px;font-size:1.2rem}
+.needs ul{list-style:none;display:grid;gap:12px;color:var(--muted)}
+.needs li::before{content:"—";color:var(--blue-light);margin-inline-end:8px}
+
+/* ===== Curriculum ===== */
+details.module{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  margin-bottom:14px;overflow:hidden;
+}
+details.module summary{
+  cursor:pointer;list-style:none;padding:22px 26px;
+  display:flex;justify-content:space-between;align-items:center;gap:14px;
+  font-weight:800;font-size:1.08rem;
+}
+details.module summary::-webkit-details-marker{display:none}
+details.module summary .chev{transition:.25s;color:var(--blue-light);flex:none}
+details.module[open] summary .chev{transform:rotate(180deg)}
+.module-body{padding:0 26px 22px;border-top:1px solid var(--border)}
+.lesson{padding:16px 0;border-bottom:1px dashed rgba(96,165,250,.15)}
+.lesson:last-child{border-bottom:none}
+.lesson h4{font-size:1rem;margin-bottom:4px}
+.lesson h4 .num{
+  display:inline-grid;place-items:center;min-width:30px;height:30px;padding:0 6px;
+  background:rgba(59,130,246,.15);color:var(--blue-light);border-radius:8px;
+  font-size:.85rem;margin-inline-end:10px;
+}
+.lesson p{color:var(--muted);font-size:.94rem}
+
+/* ===== Included ===== */
+.included{background:var(--navy-2)}
+.inc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:36px}
+@media(max-width:700px){.inc-grid{grid-template-columns:1fr}}
+.inc-item{
+  display:flex;gap:12px;align-items:flex-start;background:var(--card);
+  border:1px solid var(--border);border-radius:14px;padding:18px 20px;
+}
+.inc-item p{color:var(--muted);font-size:.95rem}
+
+/* ===== Pricing ===== */
+.pricing{position:relative;
+  background:radial-gradient(800px 420px at 50% 0%,rgba(59,130,246,.18),transparent 65%);}
+.price-box{
+  max-width:620px;margin:40px auto 0;text-align:center;
+  background:linear-gradient(180deg,var(--navy-3),var(--navy-2));
+  border:1px solid rgba(96,165,250,.35);border-radius:26px;
+  padding:48px 34px;box-shadow:0 30px 80px rgba(0,0,0,.5);
+}
+.price-box .old{font-size:1.35rem;color:var(--muted);text-decoration:line-through}
+.price-box .cur{font-size:clamp(2.6rem,7vw,3.8rem);font-weight:900;color:var(--blue-neon);line-height:1.3}
+.price-box .cur small{font-size:1.1rem;color:var(--white);font-weight:700}
+.save{
+  display:inline-block;margin-top:10px;background:rgba(52,211,153,.14);color:#6EE7B7;
+  border:1px solid rgba(110,231,183,.3);padding:6px 18px;border-radius:999px;font-weight:700;
+}
+.price-box .btn{width:100%;margin-top:28px;font-size:1.15rem;padding:17px}
+.launch-note{color:var(--muted);font-size:.92rem;margin-top:16px}
+
+/* ===== Gift ===== */
+.gift{
+  background:linear-gradient(135deg,rgba(59,130,246,.14),rgba(37,99,235,.05));
+  border:1px solid rgba(96,165,250,.3);border-radius:26px;
+  padding:44px 34px;margin-top:70px;
+}
+.gift-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:24px}
+@media(max-width:700px){.gift-grid{grid-template-columns:1fr}}
+.gift-item{background:rgba(8,18,38,.5);border:1px solid var(--border);border-radius:14px;padding:18px 20px;display:flex;gap:12px;align-items:flex-start}
+.gift-item p{color:var(--muted);font-size:.93rem}
+
+/* ===== About ===== */
+.about{background:var(--navy-2)}
+.about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:44px;align-items:center}
+@media(max-width:860px){.about-grid{grid-template-columns:1fr}}
+.about-img{
+  border-radius:24px;border:1px solid var(--border);
+  box-shadow:0 20px 50px rgba(0,0,0,.45);aspect-ratio:1/1;object-fit:cover;width:100%;
+}
+.about p{color:var(--muted);margin-bottom:14px}
+.about .sig{color:var(--white);font-weight:800;font-size:1.15rem;margin-top:8px}
+
+/* ===== FAQ ===== */
+details.faq{
+  background:var(--card);border:1px solid var(--border);border-radius:14px;
+  margin-bottom:12px;overflow:hidden;
+}
+details.faq summary{
+  cursor:pointer;list-style:none;padding:18px 22px;font-weight:700;
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+}
+details.faq summary::-webkit-details-marker{display:none}
+details.faq summary .chev{color:var(--blue-light);flex:none;transition:.2s}
+details.faq[open] summary .chev{transform:rotate(180deg)}
+details.faq .answer{padding:0 22px 20px;color:var(--muted);font-size:.97rem}
+
+/* ===== Final CTA ===== */
+.final{
+  text-align:center;
+  background:radial-gradient(700px 380px at 50% 100%,rgba(59,130,246,.2),transparent 65%);
+}
+.final p{color:var(--muted);max-width:600px;margin:14px auto 30px}
+
+/* ===== Footer ===== */
+footer{border-top:1px solid var(--border);padding:34px 0;color:var(--muted);font-size:.92rem}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.foot a:hover{color:var(--white)}
+
+/* ===== Mobile sticky CTA ===== */
+.sticky-cta{
+  display:none;position:fixed;bottom:0;inset-inline:0;z-index:60;
+  background:rgba(8,18,38,.95);backdrop-filter:blur(10px);
+  border-top:1px solid var(--border);padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+}
+.sticky-cta .btn{width:100%;padding:14px}
+@media(max-width:820px){.sticky-cta{display:block}body{padding-bottom:76px}}
+:focus-visible{outline:2px solid var(--blue-light);outline-offset:3px;border-radius:6px}
+</style>
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header>
+  <div class="container nav">
+    <a class="logo" href="#top">Inejih <span>School</span></a>
+    <nav class="nav-links" aria-label="التنقل الرئيسي">
+      <a href="#curriculum">المنهج</a>
+      <a href="#projects">المشاريع</a>
+      <a href="#about">عن المدرس</a>
+      <a href="#faq">الأسئلة الشائعة</a>
+    </nav>
+    <a class="nav-cta" href="#pricing">اشترك الآن</a>
+  </div>
+</header>
+
+<!-- ===== Hero ===== -->
+<section class="hero" id="top">
+  <div class="container hero-grid">
+    <div>
+      <span class="badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+        لا تحتاج إلى خبرة سابقة في البرمجة
+      </span>
+      <h1>حوّل فكرتك إلى <span class="hl">مشروع رقمي</span>، حتى لو لم تكتب سطرا واحدا من البرمجة من قبل.</h1>
+      <p>تعلّم كيف تستخدم الذكاء الاصطناعي لبناء مواقعك وصفحاتك التسويقية ومعارض أعمالك ومشاريعك الرقمية، من الصفر، وبأدوات مجانية أو ذات خطط مجانية، خطوة بخطوة.</p>
+      <ul class="hero-points">
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>منهج عملي: 6 وحدات و25 درسا من البداية إلى النشر</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>ابنِ موقعك الشخصي وصفحة هبوط لنشاطك خلال الدورة</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>لا تحتاج إلى ميزانية كبيرة — نبدأ بأدوات مجانية قدر الإمكان</li>
+      </ul>
+      <div class="hero-btns">
+        <a class="btn btn-primary" href="#pricing">أريد الالتحاق بالدورة</a>
+        <a class="btn btn-ghost" href="#curriculum">اكتشف محتوى الدورة</a>
+      </div>
+    </div>
+    <div class="hero-img-wrap">
+      <img class="hero-img" src="https://res.cloudinary.com/dobbzalqp/image/upload/v1791658271/slj8zmndhed3mcl1kpco.jpg" alt="انجيه سيد محمد، مؤسس مدرسة انجيه">
+      <div class="price-chip">
+        <div class="old">17,000 أوقية جديدة</div>
+        <div class="new">500 أوقية جديدة فقط</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Problem ===== -->
+<section class="problem" id="problem">
+  <div class="container">
+    <span class="section-tag">المشكلة</span>
+    <h2>هل تشعر أن فكرتك عالقة، ولا تعرف من أين تبدأ؟</h2>
+    <p class="lead">هذا الشعف مألوف جدا، وأنت لست الوحيد الذي يمر به.</p>
+    <div class="problem-list">
+      <div class="prob-card">
+        <div class="prob-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></div>
+        <div><p>لديك فكرة مشروع، لكنك لا تعرف كيف تحوّلها إلى موقع فعلي يعمل على الإنترنت.</p></div>
+      </div>
+      <div class="prob-card">
+        <div class="prob-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></div>
+        <div><p>تحتاج إلى صفحة تعرض خدماتك أو مشروعك، ولا تعرف من أين تبدأ ولا ماذا تكتب فيها.</p></div>
+      </div>
+      <div class="prob-card">
+        <div class="prob-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></div>
+        <div><p>تعتقد أن بناء المواقع يتطلب سنوات من البرمجة قبل أن تتمكن من تنفيذ أي فكرة.</p></div>
+      </div>
+      <div class="prob-card">
+        <div class="prob-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></div>
+        <div><p>ترى أدوات الذكاء الاصطناعي أمامك يوميا، لكنك لا تعرف كيف توجّهها للحصول على نتيجة جيدة.</p></div>
+      </div>
+      <div class="prob-card">
+        <div class="prob-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></div>
+        <div><p>ترغب في تجربة مشروع رقمي دون دفع تكاليف كبيرة منذ البداية.</p></div>
+      </div>
+      <div class="prob-card">
+        <div class="prob-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></div>
+        <div><p>تريد تقديم خدمات رقمية، لكنك لم تبنِ أعمالا يمكنك عرضها على العملاء بعد.</p></div>
+      </div>
+    </div>
+    <p class="lead" style="margin-top:28px">البرمجة التقليدية مهمة ومفيدة، لكنها ليست البوابة الوحيدة. ما تحتاجه اليوم هو معرفة كيف تستخدم أدوات الذكاء الاصطناعي بوعي — وهذا بالضبط ما ستتعلمه هنا.</p>
+  </div>
+</section>
+
+<!-- ===== Solution ===== -->
+<section id="solution">
+  <div class="container">
+    <span class="section-tag">الحل</span>
+    <h2>ما المقصود بالبرمجة باستخدام الذكاء الاصطناعي؟</h2>
+    <p class="lead">المعروف أيضا باسم Vibe Coding: بدلا من كتابة كل سطر بنفسك، تتعلم كيف تقود الذكاء الاصطناعي ليبني معك. أنت صاحب الفكرة والقرار والمراجعة، وهو مساعدك التقني.</p>
+    <div class="sol-grid">
+      <div class="sol-card">
+        <div class="sol-num">1</div>
+        <h3>تشرح فكرتك بوضوح</h3>
+        <p>تتعلم كيف تصف مشروعك للذكاء الاصطناعي بوصف دقيق يعطيك نتيجة قريبة مما تريد من أول مرة.</p>
+      </div>
+      <div class="sol-card">
+        <div class="sol-num">2</div>
+        <h3>تكتب تعليمات احترافية</h3>
+        <p>تتقن هندسة الأوامر: تحديد الهدف والجمهور والخصائص والقيود ومعايير نجاح المشروع.</p>
+      </div>
+      <div class="sol-card">
+        <div class="sol-num">3</div>
+        <h3>تحوّل الوصف إلى واجهات</h3>
+        <p>تشاهد وصفك يتحول إلى صفحات وأقسام وأزرار يمكنك رؤيتها وتجربتها فورا.</p>
+      </div>
+      <div class="sol-card">
+        <div class="sol-num">4</div>
+        <h3>تراجع وتطلب التحسين</h3>
+        <p>لا تقبل أول نتيجة. تتعلم كيف تقيّم ما حصلت عليه وتطلب تعديلات محددة حتى يرضيك.</p>
+      </div>
+      <div class="sol-card">
+        <div class="sol-num">5</div>
+        <h3>تكتشف الأخطاء وتصلحها</h3>
+        <p>تتعلم قراءة رسائل الأخطاء وفهم سببها وطلب الحلول من الذكاء الاصطناعي بثقة.</p>
+      </div>
+      <div class="sol-card">
+        <div class="sol-num">6</div>
+        <h3>تنشر مشروعك على الإنترنت</h3>
+        <p>تتعرف إلى خدمات النشر التي توفر خططا مجانية مناسبة لتطلق مشروعك للعالم.</p>
+      </div>
+    </div>
+    <div class="honest-note">
+      <strong>بكل صدق:</strong> عدم الحاجة إلى خبرة برمجية سابقة لا يعني أن كل مشروع سيعمل من أول محاولة، ولا أن كل أداة مجانية بلا حدود. الذكاء الاصطناعي مساعد قوي، لكن النتيجة الجيدة تحتاج منك تعليما واضحا ومراجعة وتطبيقا — وهذا ما تدرّسه الدورة.
+    </div>
+  </div>
+</section>
+
+<!-- ===== Project types ===== -->
+<section class="types" id="types">
+  <div class="container">
+    <span class="section-tag">ماذا ستبني؟</span>
+    <h2>أنواع المشاريع التي تغطيها الدورة</h2>
+    <p class="lead">منهج تطبيقي متنوع، يناسب من يريد موقعا شخصيا بسيطا ومن يريد خوض تجربة تطبيق ويب أكثر تفاعلا.</p>
+    <div class="types-grid">
+      <div class="type-card">
+        <h3>المواقع التعريفية الشخصية</h3>
+        <p>موقع شخصي يعرض مهاراتك وأعمالك وخدماتك وطرق التواصل معك — حضورك المهني على الإنترنت.</p>
+      </div>
+      <div class="type-card">
+        <h3>صفحات الهبوط</h3>
+        <p>صفحة احترافية لمنتج أو دورة أو خدمة أو مشروع تجاري، تشرح القيمة وتقنع الزائر بالخطوة التالية.</p>
+      </div>
+      <div class="type-card">
+        <h3>صفحات التسويق ومسارات التحويل</h3>
+        <p>صفحات تجمع اهتمام الزوار وتعرض العروض وتوجههم نحو التواصل أو التسجيل، مع نماذج مناسبة لجمع بيانات العملاء.</p>
+      </div>
+      <div class="type-card">
+        <h3>صفحات الأعمال التجارية</h3>
+        <p>حضور رقمي لنشاط تجاري: صفحة لخدمات شركة صغيرة أو مشروع محلي تعرّف الناس بما تقدمه.</p>
+      </div>
+      <div class="type-card" style="grid-column:1/-1">
+        <h3>تطبيقات الويب والمشاريع الرقمية</h3>
+        <p>تتعرف إلى طريقة تخطيط تطبيق ويب أو مشروع SaaS وتجربة بنائه بمساعدة الذكاء الاصطناعي. مستوى التعقيد يعتمد على المشروع والأدوات المتاحة، وستفهم متى تحتاج خطوات إضافية في الاختبار والأمان وإدارة البيانات.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Real projects ===== -->
+<section id="projects">
+  <div class="container">
+    <span class="section-tag">تجربة حقيقية</span>
+    <h2>لن تتعلم من أمثلة نظرية فقط، بل من تجربة بناء مشاريع رقمية حقيقية.</h2>
+    <p class="lead">أستفيد في التدريس من تجربتي العملية في بناء مشاريع فعلية، منها ما هو منشور على الإنترنت ويمكنك زيارته الآن.</p>
+    <div class="projects-grid">
+      <div class="proj-card">
+        <span class="tag">مشروع منشور</span>
+        <h3>توجيهي — منصة التوجيه الجامعي</h3>
+        <p>منصة تساعد طلاب البكالوريا في موريتانيا على استكشاف خيارات التوجيه والتخصصات الجامعية المناسبة لهم.</p>
+        <a class="proj-link" href="https://tewjihi.vercel.app/" target="_blank" rel="noopener">زيارة المشروع
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M10 14L21 3M21 14v5a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h5"/></svg>
+        </a>
+      </div>
+      <div class="proj-card">
+        <span class="tag">مشروع منشور</span>
+        <h3>الموقع الشخصي</h3>
+        <p>موقع شخصي يعرض الهوية المهنية والخدمات والمشاريع — النموذج الذي ستبني مثالا عليه خلال الدورة.</p>
+        <a class="proj-link" href="https://inejih.com" target="_blank" rel="noopener">زيارة الموقع
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M10 14L21 3M21 14v5a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h5"/></svg>
+        </a>
+      </div>
+      <div class="proj-card">
+        <span class="tag">تطبيق عملي</span>
+        <h3>صفحة لجمع آراء العملاء</h3>
+        <p>مثال على صفحة مخصصة لجمع تقييمات العملاء وآرائهم وتنظيمها في تجربة رقمية سهلة الاستخدام.</p>
+      </div>
+      <div class="proj-card">
+        <span class="tag">تطبيق عملي</span>
+        <h3>صفحة هبوط لنشاط تجاري</h3>
+        <p>مثال على صفحة تسويقية تعرض نشاطا أو خدمة، توضح قيمتها للزائر، وتوجهه إلى التواصل أو اتخاذ إجراء.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Audience ===== -->
+<section class="audience" id="audience">
+  <div class="container">
+    <span class="section-tag">لمن هذه الدورة؟</span>
+    <h2>هل هذه الدورة مناسبة لي؟</h2>
+    <div class="aud-grid">
+      <ul class="check-list">
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><p>لم تكتب أي سطر برمجي في حياتك، وتريد نقطة بداية واضحة.</p></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><p>تريد بناء موقع شخصي أو صفحة هبوط تعرّف بك أو بنشاطك.</p></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><p>تريد عرض مشروعك على الإنترنت ليراه الناس فعلا، لا أن يبقى فكرة في هاتفك.</p></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><p>تريد التعرف إلى طريقة بناء تطبيقات الويب باستخدام الذكاء الاصطناعي.</p></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><p>تريد تعلم مهارة عملية يمكن تطويرها لاحقا إلى خدمة تقدمها للعملاء.</p></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><p>تريد البدء بالأدوات المتاحة مجانا قدر الإمكان، دون اشتراكات باهظة من اليوم الأول.</p></li>
+      </ul>
+      <div class="needs">
+        <h3>ما الذي تحتاج إليه؟</h3>
+        <ul>
+          <li>حاسوب موصى به للتطبيق العملي.</li>
+          <li>اتصال بالإنترنت.</li>
+          <li>حسابات الأدوات المطلوبة بحسب شرح الدورة.</li>
+          <li>الاستعداد للتجربة وتطبيق الدروس بنفسك.</li>
+        </ul>
+        <p style="margin-top:16px;font-size:.9rem">يمكنك مشاهدة بعض الدروس بالهاتف، لكن الحاسوب ضروري في مراحل البناء والنشر العملية.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Curriculum ===== -->
+<section id="curriculum">
+  <div class="container">
+    <span class="section-tag">المنهج الكامل</span>
+    <h2>ست وحدات، خمسة وعشرون درسا</h2>
+    <p class="lead">مسار منظم يأخذك من التعرف إلى الأدوات إلى بناء مشاريعك ونشرها. اضغط على أي وحدة لعرض دروسها.</p>
+
+    <div style="margin-top:36px">
+      <details class="module" open>
+        <summary>الوحدة الأولى: البداية والتعرف إلى الدورة <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="module-body">
+          <div class="lesson"><h4><span class="num">1</span>مقدمة الدورة وخريطة الطريق</h4><p>تهنئة الطالب بالالتحاق، وشرح ما سيتعلمه، وكيف سينتقل من فكرة أولية إلى بناء مشروع رقمي.</p></div>
+          <div class="lesson"><h4><span class="num">2</span>كيف تتابع الدورة وتطبق كل ما تتعلمه؟</h4><p>شرح طريقة متابعة الدروس، وتنظيم التطبيق العملي، وتجنب الاكتفاء بالمشاهدة دون تنفيذ.</p></div>
+          <div class="lesson"><h4><span class="num">3</span>الأدوات التي سنستخدمها وكيفية إعدادها</h4><p>التعرف إلى الأدوات اللازمة وشرح طريقة الوصول إليها وإعداد الحسابات والبيئة المطلوبة.</p></div>
+        </div>
+      </details>
+
+      <details class="module">
+        <summary>الوحدة الثانية: التعرف إلى الذكاء الاصطناعي <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="module-body">
+          <div class="lesson"><h4><span class="num">4</span>الفرق بين أدوات الذكاء الاصطناعي العامة وأدوات البرمجة</h4><p>فهم الفرق بين أدوات المحادثة العامة والأدوات المصممة للمساعدة في إنشاء المشاريع البرمجية.</p></div>
+          <div class="lesson"><h4><span class="num">5</span>ما المشاريع التي يمكنك بناؤها باستخدام البرمجة بمساعدة الذكاء الاصطناعي؟</h4><p>استعراض المواقع الشخصية وصفحات الهبوط وصفحات الأعمال ومسارات التحويل والتطبيقات الرقمية.</p></div>
+          <div class="lesson"><h4><span class="num">6</span>كيف يعمل الذكاء الاصطناعي، وما حدود قدراته؟</h4><p>شرح مبسط لطريقة التعامل مع النماذج، وأسباب اختلاف النتائج، وأهمية التحقق والمراجعة.</p></div>
+        </div>
+      </details>
+
+      <details class="module">
+        <summary>الوحدة الثالثة: هندسة الأوامر والتعليمات <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="module-body">
+          <div class="lesson"><h4><span class="num">7</span>ما هندسة الأوامر؟</h4><p>فهم كيفية كتابة تعليمات واضحة ومحددة للحصول على نتائج أفضل من أدوات الذكاء الاصطناعي.</p></div>
+          <div class="lesson"><h4><span class="num">8</span>كيف تتقن كتابة الأوامر الاحترافية؟</h4><p>تعلم تحديد الهدف والجمهور والخصائص والقيود والمظهر المطلوب ومعايير نجاح المشروع.</p></div>
+          <div class="lesson"><h4><span class="num">9</span>تطبيق عملي — كتابة أمر احترافي لبناء صفحة هبوط</h4><p>تحويل فكرة تجارية إلى وصف واضح يمكن استخدامه لإنشاء صفحة هبوط.</p></div>
+          <div class="lesson"><h4><span class="num">10</span>تطبيق عملي — كتابة أمر لبناء موقع شخصي احترافي</h4><p>تحديد الهوية المهنية والأقسام والمشاريع وروابط التواصل والتصميم.</p></div>
+          <div class="lesson"><h4><span class="num">11</span>تطبيق عملي — كتابة أمر لبناء مسار تسويقي</h4><p>تحديد مراحل تجربة الزائر، وعرض الخدمة، وجمع بيانات العملاء، وتوجيههم إلى الإجراء المطلوب.</p></div>
+          <div class="lesson"><h4><span class="num">12</span>تطبيق عملي — كتابة أمر لتخطيط مشروع SaaS</h4><p>تعلم وصف فكرة تطبيق ويب، ومستخدميه، ووظائفه، وواجهاته، مع فهم أن التنفيذ قد يحتاج إلى خطوات إضافية.</p></div>
+        </div>
+      </details>
+
+      <details class="module">
+        <summary>الوحدة الرابعة: البرمجة بمساعدة الذكاء الاصطناعي <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="module-body">
+          <div class="lesson"><h4><span class="num">13</span>ما البرمجة بمساعدة الذكاء الاصطناعي؟</h4><p>التعرف إلى المفهوم وطريقة تحويل الأفكار إلى مشاريع عملية.</p></div>
+          <div class="lesson"><h4><span class="num">14</span>كيف تحقق نتائج أفضل عند العمل مع أدوات البرمجة؟</h4><p>تعلم تقسيم العمل إلى خطوات، وتوضيح المطلوب، ومراجعة النتائج تدريجيا.</p></div>
+          <div class="lesson"><h4><span class="num">15</span>كيف تخطط لبنية مشروعك قبل البدء؟</h4><p>تحديد الهدف والصفحات والمكونات والوظائف المطلوبة وترتيب خطوات التنفيذ.</p></div>
+          <div class="lesson"><h4><span class="num">16</span>كيف تجهز بيئة العمل؟</h4><p>التعرف إلى الأدوات والملفات والإعدادات التي يحتاج إليها المشروع.</p></div>
+          <div class="lesson"><h4><span class="num">17</span>كيف تنشر مشروعك على الإنترنت مجانا؟</h4><p>التعرف إلى خدمات الاستضافة والنشر التي تقدم خططا مجانية، وطريقة اختيار الأنسب للمشروع.</p></div>
+        </div>
+      </details>
+
+      <details class="module">
+        <summary>الوحدة الخامسة: التطبيق العملي وبناء المشاريع <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="module-body">
+          <div class="lesson"><h4><span class="num">18</span>ابن موقعك الشخصي خطوة بخطوة</h4><p>إنشاء موقع شخصي يعرض المهارات والخدمات والمشاريع.</p></div>
+          <div class="lesson"><h4><span class="num">19</span>ابن صفحة هبوط لنشاطك التجاري</h4><p>إنشاء صفحة تسويقية واضحة لنشاط أو منتج أو خدمة.</p></div>
+          <div class="lesson"><h4><span class="num">20</span>ابن مسارا تسويقيا خاصا بك</h4><p>تطبيق ما تعلمته لإنشاء صفحات ونماذج توجه الزائر نحو التواصل أو التسجيل.</p></div>
+          <div class="lesson"><h4><span class="num">21</span>ابدأ بناء تطبيق ويب أو مشروع SaaS</h4><p>التعرف إلى طريقة بناء تطبيق أكثر تفاعلا، مع توضيح أهمية الاختبار والأمان وإدارة البيانات عند الحاجة.</p></div>
+        </div>
+      </details>
+
+      <details class="module">
+        <summary>الوحدة السادسة: معالجة المشكلات والخطوات التالية <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="module-body">
+          <div class="lesson"><h4><span class="num">22</span>كيف تتعامل مع الأخطاء بطريقة احترافية؟</h4><p>فهم رسائل الأخطاء، وتحديد المشكلة، وطلب المساعدة من الذكاء الاصطناعي، واختبار الحلول.</p></div>
+          <div class="lesson"><h4><span class="num">23</span>كيف تتعامل مع حدود الذكاء الاصطناعي؟</h4><p>معرفة متى تخطئ الأدوات، وكيف تتحقق من النتائج، ومتى تحتاج إلى توثيق أو مساعدة تقنية إضافية.</p></div>
+          <div class="lesson"><h4><span class="num">24</span>كيف تحول مهارتك إلى فرصة دخل؟</h4><p>التعرف إلى تقديم خدمات المواقع وصفحات الهبوط ومعارض الأعمال، وبناء نماذج أعمال، والتواصل مع العملاء، وتحديد نطاق الخدمة والسعر.</p></div>
+          <div class="lesson"><h4><span class="num">25</span>ماذا بعد الدورة؟</h4><p>خطة عملية لمواصلة التعلم، وتحسين المشاريع، وبناء معرض أعمال، وتطوير المهارات تدريجيا.</p></div>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Included ===== -->
+<section class="included" id="included">
+  <div class="container">
+    <span class="section-tag">محتوى الاشتراك</span>
+    <h2>ماذا ستحصل عليه عند الاشتراك؟</h2>
+    <div class="inc-grid">
+      <div class="inc-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><p>الوصول الكامل إلى محتوى الدورة وفق نظام التسليم المعتمد.</p></div>
+      <div class="inc-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><p>ست وحدات تعليمية تضم 25 درسا مرتبة بشكل تدريجي.</p></div>
+      <div class="inc-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><p>شرح يبدأ من المبادئ الأساسية، مناسب تماما للمبتدئين.</p></div>
+      <div class="inc-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><p>تطبيقات عملية على كتابة الأوامر وبناء المواقع وصفحات الهبوط.</p></div>
+      <div class="inc-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><p>التعرف إلى بناء مسارات التحويل ومشاريع تطبيقات الويب.</p></div>
+      <div class="inc-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><p>تعلم إعداد المشروع ونشره على الإنترنت باستخدام الأدوات المناسبة.</p></div>
+      <div class="inc-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><p>تعلم التعامل مع الأخطاء وحدود الذكاء الاصطناعي بواقعية.</p></div>
+      <div class="inc-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><p>التعرف إلى طرق تقديم الخدمات الرقمية وتحويل المهارة إلى فرصة مهنية.</p></div>
+      <div class="inc-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><p>ملفات وقوالب تعليمية مرفقة بالدروس العملية.</p></div>
+      <div class="inc-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><p>هدية إضافية: دليل الأدوات المجانية للبدء (تفاصيلها في الأسفل).</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Pricing ===== -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div style="text-align:center">
+      <span class="section-tag">السعر والعرض</span>
+      <h2>ابدأ ببناء مشروعك الرقمي دون أن تجعل الميزانية عائقا أمامك.</h2>
+      <p class="lead" style="margin-inline:auto">بدلا من الاكتفاء بمشاهدة أدوات الذكاء الاصطناعي أو تأجيل فكرتك لأنك لا تعرف البرمجة، يمكنك البدء بتعلم طريقة استخدامها في بناء مشاريع عملية. تمنحك هذه الدورة مسارا منظما من البداية إلى التطبيق.</p>
+    </div>
+    <div class="price-box">
+      <div class="old">17,000 أوقية جديدة</div>
+      <div class="cur">500 <small>أوقية جديدة فقط</small></div>
+      <span class="save">توفير 16,500 أوقية جديدة</span>
+      <a class="btn btn-primary" href="https://wa.me/22200000000?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20%D8%AF%D9%88%D8%B1%D8%A9%20%D9%85%D8%AF%D8%B1%D8%B3%D8%A9%20%D8%A7%D9%86%D8%AC%D9%8A%D9%87" target="_blank" rel="noopener">أشترك الآن مقابل 500 أوقية جديدة</a>
+      <p class="launch-note">سعر إطلاق — بالأوقية الجديدة الموريتانية. تواصل معنا عبر واتساب لإتمام الاشتراك، وسيصلك رابط الدورة بعد تأكيد الدفع.</p>
+    </div>
+
+    <div class="gift" id="gift">
+      <span class="section-tag">هدية إضافية</span>
+      <h2 style="font-size:1.6rem">هدية إضافية: دليلك إلى أدوات البدء المجانية</h2>
+      <p class="lead">مع اشتراكك، تحصل على دليل عملي يساعدك على التعرف إلى الأدوات التي يمكن أن تبدأ بها دون دفع اشتراك مدفوع، كلما كانت الخطط المجانية متاحة.</p>
+      <div class="gift-grid">
+        <div class="gift-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg><p>أدوات الذكاء الاصطناعي والمساعدة في البرمجة.</p></div>
+        <div class="gift-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><p>أدوات تصميم الواجهات والنماذج الأولية.</p></div>
+        <div class="gift-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20 15 15 0 010-20"/></svg><p>أدوات استضافة المواقع ونشرها.</p></div>
+        <div class="gift-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg><p>أدوات إدارة الملفات ومتابعة المشاريع.</p></div>
+        <div class="gift-item" style="grid-column:1/-1"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg><p>أدوات تساعدك على تجربة الأفكار وبناء النماذج الأولية بسرعة.</p></div>
+      </div>
+      <p class="launch-note" style="margin-top:18px">الدليل يسلَّم ضمن محتوى الدورة، ويوضح بوصدق حدود كل أداة وما قد يحتاجه مشروعك لاحقا إلى خطط مدفوعة.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== About ===== -->
+<section class="about" id="about">
+  <div class="container about-grid">
+    <img class="about-img" src="https://res.cloudinary.com/dobbzalqp/image/upload/v1791658271/slj8zmndhed3mcl1kpco.jpg" alt="انجيه سيد محمد، مدرب مدرسة انجيه">
+    <div>
+      <span class="section-tag">من أنا؟</span>
+      <h2>أهلا، أنا انجيه سيد محمد</h2>
+      <p>أنا شخص عملي اكتشفت أدوات الذكاء الاصطناعي بالتجربة، وبنيت بها مشاريع حقيقية على الإنترنت: منصة توجيهي لطلاب البكالوريا في موريتانيا، وموقعي الشخصي، وصفحات هبوط ومسارات تحويل لأنشطة مختلفة.</p>
+      <p>منذ أكثر من أربع سنوات وأنا أتعلم وأطبق وأبني في هذا المجال، وأعرف جيدا ما يشعر به المبتدئ الذي يرى كل هذه الأدوات أمامه ولا يعرف من أين يبدأ.</p>
+      <p>هذه الدورة هي خلاصة ما تعلمته عمليا: كيف تبدأ من الصفر، بأدوات مجانية قدر الإمكان، وتبني مشروعا حقيقيا يمكنك أن تفخر به — دون أن تحتاج إلى أن تكون مهندس برمجيات أولا.</p>
+      <p class="sig">انجيه سيد محمد — مؤسس Inejih School</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq">
+  <div class="container" style="max-width:820px">
+    <span class="section-tag">الأسئلة الشائعة</span>
+    <h2>كل ما تريد معرفته قبل الاشتراك</h2>
+    <div style="margin-top:32px">
+      <details class="faq">
+        <summary>هل أحتاج إلى معرفة البرمجة قبل الاشتراك؟ <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <p class="answer">لا، فالدورة مصممة للمبتدئين وتبدأ من الأساسيات. ومع ذلك، ستحتاج إلى التجربة والتطبيق ومراجعة النتائج بنفسك.</p>
+      </details>
+      <details class="faq">
+        <summary>هل أحتاج إلى ميزانية لبدء التعلم؟ <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <p class="answer">يمكنك البدء باستخدام الأدوات والخدمات التي توفر خططا مجانية، لكن بعض الميزات أو المشاريع قد تحتاج لاحقا إلى خدمات مدفوعة.</p>
+      </details>
+      <details class="faq">
+        <summary>هل يمكنني بناء موقع شخصي؟ <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <p class="answer">نعم، تتناول الدورة بناء موقع شخصي ضمن التطبيقات العملية، خطوة بخطوة حتى النشر.</p>
+      </details>
+      <details class="faq">
+        <summary>هل سأتعلم بناء صفحات الهبوط؟ <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <p class="answer">نعم، تتضمن الدورة درسا لتخطيط صفحة الهبوط وآخر للتطبيق العملي الكامل.</p>
+      </details>
+      <details class="faq">
+        <summary>هل سأتعلم بناء SaaS؟ <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <p class="answer">تتعرف إلى تخطيط تطبيقات الويب ومشاريع SaaS وتجربة بنائها بمساعدة الذكاء الاصطناعي. أما التطبيقات المتقدمة فتتطلب اختبارات وفهما إضافيا للجوانب التقنية والأمنية.</p>
+      </details>
+      <details class="faq">
+        <summary>هل سأربح المال بعد الدورة؟ <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <p class="answer">لا يوجد دخل مضمون. ستتعلم مهارات يمكنك تطويرها والاستفادة منها في تقديم خدمات رقمية، لكن النتائج تعتمد على جودة عملك وتطبيقك وقدرتك على الوصول إلى العملاء.</p>
+      </details>
+      <details class="faq">
+        <summary>كم سعر الدورة؟ <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <p class="answer">500 أوقية جديدة موريتانية وفقا لعرض الإطلاق المعروض على الصفحة.</p>
+      </details>
+      <details class="faq">
+        <summary>ما الذي أحتاج إليه للتطبيق؟ <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <p class="answer">يفضل توفر حاسوب واتصال بالإنترنت وحسابات الأدوات اللازمة بحسب شرح الدورة.</p>
+      </details>
+      <details class="faq">
+        <summary>كيف أحصل على الدورة بعد الدفع؟ <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <p class="answer">بعد تأكيد الدفع عبر واتساب، يصلك رابط الوصول إلى محتوى الدورة كاملا مع الدليل المرفق والملفات التعليمية.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Final CTA ===== -->
+<section class="final" id="final">
+  <div class="container">
+    <h2>فكرتك لا تحتاج إلى أن تبقى مجرد فكرة.</h2>
+    <p>ابدأ بتعلم طريقة تحويل أفكارك إلى مواقع وصفحات ومشاريع رقمية بمساعدة الذكاء الاصطناعي. لا تحتاج إلى خبرة برمجية سابقة حتى تبدأ، ولا إلى شراء مجموعة من الأدوات المدفوعة منذ اليوم الأول. ابدأ من الأساسيات، وطبق خطوة بخطوة، وابن مشروعا يمكنك تطويره مع الوقت.</p>
+    <a class="btn btn-primary" href="https://wa.me/22200000000?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20%D8%AF%D9%88%D8%B1%D8%A9%20%D9%85%D8%AF%D8%B1%D8%B3%D8%A9%20%D8%A7%D9%86%D8%AC%D9%8A%D9%87" target="_blank" rel="noopener">ابدأ رحلتك مع Inejih School — 500 أوقية جديدة</a>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer>
+  <div class="container foot">
+    <div><strong style="color:var(--white)">Inejih School</strong> — مدرسة انجيه لتعليم بناء المشاريع الرقمية</div>
+    <div style="display:flex;gap:20px">
+      <a href="https://tewjihi.vercel.app/" target="_blank" rel="noopener">توجيهي</a>
+      <a href="#curriculum">المنهج</a>
+      <a href="#pricing">السعر</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== Sticky mobile CTA ===== -->
+<div class="sticky-cta">
+  <a class="btn btn-primary" href="#pricing">اشترك الآن — 500 أوقية جديدة</a>
+</div>
+
+</body>
+</html>
